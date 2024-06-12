@@ -9,8 +9,9 @@ CFLAGS += -Wall -Werror -Wformat-security -Wignored-qualifiers -Winit-self \
 	-Wstack-usage=4096 -Wmissing-prototypes -Wfloat-equal -Wabsolute-value
 
 CFLAGS += -fsanitize=undefined -fsanitize-undefined-trap-on-error
+NASMFLAGS += -f elf32
 
-CC = gcc -f elf32 -no-pie -fno-pie
+CC = gcc -no-pie -fno-pie
 
 TARGET = integral
 NASM = nasm

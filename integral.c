@@ -2,7 +2,7 @@
 #include <ctype.h>
 #include <string.h>
 
-extern double _F3(double);;
+extern double F3(double);;
 float root(int f, float g, float a, float b, float eps1);
 float integral(int f, float a, float b, float eps2);
 void parse_args(int *func, int *test, int *err, int *iterations, int argc, char *argv[]);
@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
    // int iterations = 0; // true/false
    // int test = 0;  // true/false
    // int err = 0;  // error code
-   printf("%f", _F3(1.0));
+   printf("%f", F3(1.0));
    // parse_args(&func, &test, &err, &iterations, argc, argv);
    // if (err) {
    //    return err;
