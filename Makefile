@@ -10,7 +10,7 @@ CFLAGS += -Wall -Werror -Wformat-security -Wignored-qualifiers -Winit-self \
 
 CFLAGS += -fsanitize=undefined -fsanitize-undefined-trap-on-error
 
-CC += -m64 -no-pie -fno-pie
+CC = gcc -f elf32 -no-pie -fno-pie
 
 TARGET = integral
 NASM = nasm
