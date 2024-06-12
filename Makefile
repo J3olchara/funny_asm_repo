@@ -10,13 +10,28 @@ CFLAGS += -Wall -Werror -Wformat-security -Wignored-qualifiers -Winit-self \
 
 CFLAGS += -fsanitize=undefined -fsanitize-undefined-trap-on-error
 
-CC += -m32 -no-pie -fno-pie
+CC += -m64 -no-pie -fno-pie
 
-LDLIBS = -lm
+TARGET = integral
+NASM = nasm
+
+C_SOURCES = integral.c
+ASM_SOURCES = functions.asm
+
+OBJ = $(C_SOURCES:.c=.o) $(ASM_SOURCES:.o)
 
 .PHONY: all
 
-all: integral
+all: $(TARGET)
 
-integral: integral.c
-	$(CC) $(CFLAGS) -o $@ $< $(LDLIBS)
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) $< -o $@
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+%.o: %.asm
+	$(NASM) $(NASMFLAGS) $< -o $@
+
+clean:
+	rm -f $(OBJ) $(TARGET)
